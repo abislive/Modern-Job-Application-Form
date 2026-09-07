@@ -24,6 +24,7 @@ The form auto-generates essential fields like Post Number, Closing Date, and Int
 
 ## 📁 File Structure
 ├── index.html # Main application form (self-contained)
+
 └── README.md # Project documentation
 
 ## 🚀 How to Use
