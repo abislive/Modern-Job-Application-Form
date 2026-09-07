@@ -26,7 +26,6 @@ The form auto-generates essential fields like Post Number, Closing Date, and Int
 ├── index.html # Main application form (self-contained)
 └── README.md # Project documentation
 
-
 ## 🚀 How to Use
 
 1. **Clone or download** the repository.
