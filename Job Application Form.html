@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Job Application Form</title>
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-dark: #3730a3;
+            --accent: #f59e0b;
+            --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            --card-bg: #ffffff;
+            --text-dark: #1e293b;
+            --text-muted: #475569;
+            --border: #e2e8f0;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 8px 20px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.15);
+            --radius: 14px;
+            --radius-sm: 8px;
+            --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font);
+            background: var(--bg-gradient);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+            animation: fadeInPage 0.8s ease-out;
+        }
+
+        @keyframes fadeInPage {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .form-container {
+            width: 100%;
+            max-width: 1000px;
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            animation: slideUp 0.7s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+        }
+
+        td,
+        th {
+            border: 1px solid var(--border);
+            padding: 12px 14px;
+            vertical-align: middle;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            background-color: #fff;
+            transition: background-color 0.2s;
+        }
+
+        td:hover {
+            background-color: #fafcff;
+        }
+
+        .section-banner {
+            background: linear-gradient(135deg, #ffd966 0%, #fbbf24 100%);
+            color: #1e293b;
+            font-weight: 700;
+            text-align: left;
+            padding: 14px 18px;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+            border: 1px solid #fcd34d;
+            text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+            box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.05);
+        }
+
+        .main-title {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: #fff;
+            font-weight: 800;
+            text-align: center;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+            padding: 22px 10px;
+            border: 1px solid #d97706;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            text-transform: uppercase;
+            animation: pulseGlow 3s infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4); }
+            100% { box-shadow: 0 0 20px 8px rgba(245, 158, 11, 0.2); }
+        }
+
+        .confidential {
+            background: #fef3c7;
+            color: #92400e;
+            font-weight: 600;
+            text-align: center;
+            font-size: 0.95rem;
+            padding: 12px;
+            letter-spacing: 0.8px;
+            border: 1px dashed #fbbf24;
+        }
+
+        .guidance {
+            background: #f8fafc;
+            font-style: italic;
+            color: #475569;
+            font-size: 0.9rem;
+            padding: 14px 18px;
+            line-height: 1.6;
+            border-left: 4px solid #4f46e5;
+        }
+
+        .label {
+            font-weight: 600;
+            background: #f1f5f9;
+            white-space: nowrap;
+            width: 18%;
+            color: #1e293b;
+            border-right: 2px solid #e2e8f0;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        input[type="number"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px 12px;
+            border: 2px solid #cbd5e1;
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+            font-family: inherit;
+            background: #ffffff;
+            transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
+            outline: none;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.15);
+            transform: translateY(-1px);
+        }
+
+        input:hover,
+        select:hover,
+        textarea:hover {
+            border-color: #94a3b8;
+            background-color: #fefefe;
+        }
+
+        input[readonly] {
+            background-color: #f1f5f9;
+            color: #333;
+            font-weight: 500;
+            cursor: not-allowed;
+            border-style: dashed;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 70px;
+        }
+
+        .submit-row {
+            text-align: center;
+            padding: 24px 20px;
+            background: #fafbfc;
+            border-top: 1px solid var(--border);
+        }
+
+        .btn-submit,
+        .btn-reset,
+        .btn-print {
+            border: none;
+            padding: 14px 28px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all var(--transition);
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            overflow: hidden;
+            margin: 5px;
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, #4f46e5, #6d28d9);
+            color: white;
+        }
+
+        .btn-submit:hover {
+            background: linear-gradient(135deg, #4338ca, #5b21b6);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(79, 70, 229, 0.4);
+        }
+
+        .btn-submit:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-reset {
+            background: #e2e8f0;
+            color: #1e293b;
+        }
+
+        .btn-reset:hover {
+            background: #cbd5e1;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-print {
+            background: #0ea5e9;
+            color: white;
+        }
+
+        .btn-print:hover {
+            background: #0284c7;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(14, 165, 233, 0.3);
+        }
+
+        .credit {
+            text-align: center;
+            padding: 12px;
+            background: #f1f5f9;
+            font-size: 0.85rem;
+            color: #475569;
+            border-top: 1px solid var(--border);
+            letter-spacing: 0.5px;
+        }
+
+        .checkbox-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .checkbox-row label {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary);
+            cursor: pointer;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-box {
+            background: #fff;
+            border-radius: 20px;
+            padding: 32px 28px;
+            max-width: 420px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            transform: scale(0.7);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 2px solid #fbbf24;
+        }
+
+        .modal-overlay.active .modal-box {
+            transform: scale(1);
+        }
+
+        .modal-icon {
+            font-size: 4rem;
+            margin-bottom: 12px;
+        }
+
+        .modal-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 8px;
+        }
+
+        .modal-reference {
+            background: #fef3c7;
+            padding: 14px;
+            border-radius: 12px;
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: #92400e;
+            margin: 16px 0;
+            border: 2px dashed #fbbf24;
+            word-break: break-all;
+        }
+
+        .modal-message {
+            color: #475569;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .btn-copy {
+            background: #4f46e5;
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-copy:hover {
+            background: #3730a3;
+        }
+
+        .btn-close-modal {
+            background: #e2e8f0;
+            color: #1e293b;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-left: 10px;
+        }
+
+        .btn-close-modal:hover {
+            background: #cbd5e1;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+                margin: 0;
+                display: block;
+            }
+            .form-container {
+                box-shadow: none;
+                border: none;
+                border-radius: 0;
+                max-width: 100%;
+            }
+            .submit-row,
+            .btn-submit,
+            .btn-reset,
+            .btn-print,
+            .modal-overlay {
+                display: none !important;
+            }
+            td, th {
+                padding: 6px 8px;
+                font-size: 10px;
+                color: #000;
+                background: #fff !important;
+            }
+            .section-banner,
+            .main-title,
+            .confidential,
+            .guidance {
+                background: #f0f0f0 !important;
+                color: #000 !important;
+                text-shadow: none;
+                box-shadow: none;
+                border: 1px solid #ccc;
+            }
+            .main-title {
+                font-size: 20px;
+            }
+            input,
+            select,
+            textarea {
+                border: 1px solid #ccc;
+                box-shadow: none;
+                background: #fff;
+                color: #000;
+            }
+            input[readonly] {
+                background: #f9f9f9;
+                border-style: solid;
+            }
+            .credit {
+                background: #f9f9f9;
+                color: #000;
+            }
+            .form-container {
+                animation: none;
+            }
+            @page {
+                size: A4;
+                margin: 1.5cm;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 1.8rem;
+                padding: 14px 6px;
+            }
+            .section-banner {
+                font-size: 0.95rem;
+                padding: 10px 12px;
+            }
+            td,
+            th {
+                padding: 8px 10px;
+                font-size: 0.85rem;
+            }
+            .label {
+                font-size: 0.8rem;
+            }
+            .btn-submit,
+            .btn-reset,
+            .btn-print {
+                padding: 12px 20px;
+                font-size: 0.85rem;
+                margin: 4px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <form id="jobApplicationForm" action="#" method="post">
+            <table>
+                <!-- ─── ROW 1: Post Applied For (manual) + Post Number (auto) ─── -->
+                <tr>
+                    <td class="label">Post Applied For:</td>
+                    <td style="width:38%;">
+                        <input type="text" name="post_applied" required>
+                    </td>
+                    <td class="label" style="width:18%;">Post Number:</td>
+                    <td style="width:26%;">
+                        <input type="text" name="post_number" id="postNumber" readonly>
+                    </td>
+                </tr>
+
+                <!-- ─── ROW 2: Main Title ─── -->
+                <tr>
+                    <td colspan="4" class="main-title">
+                        Job Application Form
+                    </td>
+                </tr>
+
+                <!-- ─── ROW 3: Closing Date & Interview Date (auto) ─── -->
+                <tr>
+                    <td class="label">Closing Date:</td>
+                    <td>
+                        <input type="text" name="closing_date" id="closingDate" readonly>
+                    </td>
+                    <td class="label">Interview Date:</td>
+                    <td>
+                        <input type="text" name="interview_date" id="interviewDate" readonly>
+                    </td>
+                </tr>
+
+                <!-- ─── ROW 4: Guidance Notes ─── -->
+                <tr>
+                    <td colspan="4" class="guidance">
+                        <strong>📌 Important:</strong> It is important that you read the guidance notes before completing this application form.
+                        Please complete this form fully using <strong>black ink</strong> or type. <strong>C.V.s are not accepted.</strong>
+                        Applications received after the closing date will not normally be considered.
+                    </td>
+                </tr>
+
+                <!-- ─── ROW 5: Confidentiality Notice ─── -->
+                <tr>
+                    <td colspan="4" class="confidential">
+                        🔒 THE INFORMATION YOU SUPPLY ON THIS FORM WILL BE TREATED IN CONFIDENCE
+                    </td>
+                </tr>
+
+                <!-- ─── ROW 6: Section 1 Banner ─── -->
+                <tr>
+                    <td colspan="4" class="section-banner">
+                        SECTION &ndash; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PERSONAL DETAILS
+                    </td>
+                </tr>
+
+                <!-- ─── ROW 7: Surname & Forename(s) ─── -->
+                <tr>
+                    <td class="label">Surname:</td>
+                    <td><input type="text" name="surname" required></td>
+                    <td class="label">Forename(s):</td>
+                    <td><input type="text" name="forenames" required></td>
+                </tr>
+
+                <!-- ─── ROW 8: Title (select) & Preferred Name ─── -->
+                <tr>
+                    <td class="label">Title:</td>
+                    <td>
+                        <select name="title" required>
+                            <option value="">-- Select Title --</option>
+                            <option value="Mr">Mr</option>
+                            <option value="Mrs">Mrs</option>
+                            <option value="Ms">Ms</option>
+                            <option value="Miss">Miss</option>
+                            <option value="Dr">Dr</option>
+                            <option value="Prof">Prof</option>
+                            <option value="Rev">Rev</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </td>
+                    <td class="label">Preferred Name:</td>
+                    <td><input type="text" name="preferred_name"></td>
+                </tr>
+
+                <!-- ─── ROW 9: Address ─── -->
+                <tr>
+                    <td class="label">Address:</td>
+                    <td colspan="3">
+                        <textarea name="address" rows="3" required></textarea>
+                    </td>
+                </tr>
+
+                <!-- ─── ROW 10: Postcode & Telephone ─── -->
+                <tr>
+                    <td class="label">Postcode:</td>
+                    <td><input type="text" name="postcode" required></td>
+                    <td class="label">Telephone:</td>
+                    <td><input type="tel" name="telephone"></td>
+                </tr>
+
+                <!-- ─── ROW 11: Mobile & Email ─── -->
+                <tr>
+                    <td class="label">Mobile:</td>
+                    <td><input type="tel" name="mobile"></td>
+                    <td class="label">Email:</td>
+                    <td><input type="email" name="email" required></td>
+                </tr>
+
+                <!-- ─── ROW 12: Identification No & Date of Birth ─── -->
+                <tr>
+                    <td class="label">Identification No:</td>
+                    <td><input type="text" name="identification_no"></td>
+                    <td class="label">Date of Birth:</td>
+                    <td><input type="date" name="dob" required></td>
+                </tr>
+
+                <!-- ─── ROW 13: Identification Type ─── -->
+                <tr>
+                    <td class="label">Identification Type:</td>
+                    <td colspan="3">
+                        <select name="identification_type" required>
+                            <option value="">-- Select Identification Type --</option>
+                            <option value="passport">Passport</option>
+                            <option value="national_id">National ID Card</option>
+                            <option value="drivers_license">Driver's License</option>
+                            <option value="voter_id">Voter ID</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </td>
+                </tr>
+
+                <!-- ─── ROW 14: Section 2 Banner ─── -->
+                <tr>
+                    <td colspan="4" class="section-banner">
+                        SECTION &ndash; 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; EDUCATION &amp; QUALIFICATIONS
+                    </td>
+                </tr>
+
+                <!-- ─── ROW 15: Education instructions ─── -->
+                <tr>
+                    <td colspan="4" style="font-size:0.85rem; color:#666; background:#fafafa;">
+                        Please list your most recent education and qualifications first, starting with secondary education.
+                    </td>
+                </tr>
+
+                <!-- ─── ROW 16: Education table header ─── -->
+                <tr>
+                    <td style="font-weight:600; background:#f1f5f9;">Dates (From - To)</td>
+                    <td style="font-weight:600; background:#f1f5f9;">School / College / University</td>
+                    <td colspan="2" style="font-weight:600; background:#f1f5f9;">Qualification &amp; Grade Achieved</td>
+                </tr>
+
+                <!-- ─── ROW 17-19: Education entries ─── -->
+                <tr>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td colspan="2"><input type="text"></td>
+                </tr>
+                <tr>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td colspan="2"><input type="text"></td>
+                </tr>
+                <tr>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td colspan="2"><input type="text"></td>
+                </tr>
+
+                <!-- ─── ROW 20: Section 3 Banner ─── -->
+                <tr>
+                    <td colspan="4" class="section-banner">
+                        SECTION &ndash; 3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; EMPLOYMENT HISTORY
+                    </td>
+                </tr>
+
+                <!-- ─── ROW 21: Employment instructions ─── -->
+                <tr>
+                    <td colspan="4" style="font-size:0.85rem; color:#666; background:#fafafa;">
+                        Please list your most recent employment first. Include all employment, part-time or voluntary work.
+                    </td>
+                </tr>
+
+                <!-- ─── ROW 22: Employment table header ─── -->
+                <tr>
+                    <td style="font-weight:600; background:#f1f5f9;">Dates (From - To)</td>
+                    <td style="font-weight:600; background:#f1f5f9;">Employer Name &amp; Address</td>
+                    <td style="font-weight:600; background:#f1f5f9;">Job Title</td>
+                    <td style="font-weight:600; background:#f1f5f9;">Reason for Leaving</td>
+                </tr>
+
+                <!-- ─── ROW 23-25: Employment entries ─── -->
+                <tr>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                </tr>
+
+                <!-- ─── ROW 26: Section 4 Banner ─── -->
+                <tr>
+                    <td colspan="4" class="section-banner">
+                        SECTION &ndash; 4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; REFERENCES
+                    </td>
+                </tr>
+
+                <!-- ─── ROW 27: Reference instructions ─── -->
+                <tr>
+                    <td colspan="4" style="font-size:0.85rem; color:#666; background:#fafafa;">
+                        Please provide the names and contact details of <strong>two referees</strong> — one should be your current or most recent employer.
+                    </td>
+                </tr>
+
+                <!-- ─── ROW 28: Reference 1 title ─── -->
+                <tr>
+                    <td colspan="4" style="font-weight:600; background:#e8edf3;">Reference 1</td>
+                </tr>
+
+                <!-- ─── ROW 29: Ref 1 details ─── -->
+                <tr>
+                    <td class="label">Name:</td>
+                    <td><input type="text" name="ref1_name"></td>
+                    <td class="label">Job Title:</td>
+                    <td><input type="text" name="ref1_title"></td>
+                </tr>
+                <tr>
+                    <td class="label">Organisation:</td>
+                    <td><input type="text" name="ref1_org"></td>
+                    <td class="label">Telephone:</td>
+                    <td><input type="tel" name="ref1_tel"></td>
+                </tr>
+                <tr>
+                    <td class="label">Email:</td>
+                    <td colspan="3"><input type="email" name="ref1_email"></td>
+                </tr>
+
+                <!-- ─── ROW 30: Reference 2 title ─── -->
+                <tr>
+                    <td colspan="4" style="font-weight:600; background:#e8edf3;">Reference 2</td>
+                </tr>
+
+                <!-- ─── ROW 31: Ref 2 details ─── -->
+                <tr>
+                    <td class="label">Name:</td>
+                    <td><input type="text" name="ref2_name"></td>
+                    <td class="label">Job Title:</td>
+                    <td><input type="text" name="ref2_title"></td>
+                </tr>
+                <tr>
+                    <td class="label">Organisation:</td>
+                    <td><input type="text" name="ref2_org"></td>
+                    <td class="label">Telephone:</td>
+                    <td><input type="tel" name="ref2_tel"></td>
+                </tr>
+                <tr>
+                    <td class="label">Email:</td>
+                    <td colspan="3"><input type="email" name="ref2_email"></td>
+                </tr>
+
+                <!-- ─── ROW 32: Declaration Banner ─── -->
+                <tr>
+                    <td colspan="4" class="section-banner">
+                        DECLARATION
+                    </td>
+                </tr>
+
+                <!-- ─── ROW 33: Declaration text ─── -->
+                <tr>
+                    <td colspan="4" style="font-size:0.9rem; color:#475569; line-height:1.7; padding:14px;">
+                        I declare that the information given on this form is, to the best of my knowledge, true and complete.
+                        I understand that any false or misleading information may result in my application being rejected or,
+                        if appointed, in my dismissal. I consent to the processing of my personal data for recruitment purposes
+                        in accordance with the organisation&rsquo;s privacy policy.
+                    </td>
+                </tr>
+
+                <!-- ─── ROW 34: Signature & Date ─── -->
+                <tr>
+                    <td class="label">Signature:</td>
+                    <td><input type="text" name="signature" required></td>
+                    <td class="label">Date:</td>
+                    <td><input type="date" name="signature_date" required></td>
+                </tr>
+
+                <!-- ─── ROW 35: Submit, Print, Reset Buttons ─── -->
+                <tr>
+                    <td colspan="4" class="submit-row">
+                        <button type="submit" class="btn-submit" id="submitBtn">&#10003; Submit Application</button>
+                        <button type="button" class="btn-print" id="printBtn">🖨️ Print Form</button>
+                        <button type="reset" class="btn-reset" id="resetBtn">&#8635; Clear Form</button>
+                    </td>
+                </tr>
+
+                <!-- ─── ROW 36: Credit line ─── -->
+                <tr>
+                    <td colspan="4" class="credit">
+                        Made by <strong>ABISLIVE</strong>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+    <!-- ─── MODAL FOR REFERENCE NUMBER ─── -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-box">
+            <div class="modal-icon">🎉</div>
+            <div class="modal-title">Application Submitted!</div>
+            <p class="modal-message">Your application has been successfully received. Please save the reference number below to track your application status.</p>
+            <div class="modal-reference" id="referenceDisplay">APP-XXXXXXXX</div>
+            <div style="display: flex; justify-content: center; gap: 12px; margin-top: 16px; flex-wrap: wrap;">
+                <button class="btn-copy" id="copyBtn">📋 Copy Reference</button>
+                <button class="btn-close-modal" id="closeModalBtn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            // ─── AUTO‑GENERATE POST NUMBER, CLOSING DATE, INTERVIEW DATE ───
+            function generatePostNumber() {
+                const year = new Date().getFullYear();
+                const random = Math.floor(1000 + Math.random() * 9000);
+                return `JOB-${year}-${random}`;
+            }
+
+            function generateClosingDate() {
+                const today = new Date();
+                const closing = new Date(today);
+                closing.setDate(today.getDate() + 14);
+                return closing.toISOString().split('T')[0];
+            }
+
+            function generateInterviewDate() {
+                const today = new Date();
+                const interview = new Date(today);
+                interview.setDate(today.getDate() + 28);
+                return interview.toISOString().split('T')[0];
+            }
+
+            document.getElementById('postNumber').value = generatePostNumber();
+            document.getElementById('closingDate').value = generateClosingDate();
+            document.getElementById('interviewDate').value = generateInterviewDate();
+
+            // ─── FORM SUBMISSION & REFERENCE MODAL ───
+            const form = document.getElementById('jobApplicationForm');
+            const modalOverlay = document.getElementById('modalOverlay');
+            const referenceDisplay = document.getElementById('referenceDisplay');
+            const copyBtn = document.getElementById('copyBtn');
+            const closeModalBtn = document.getElementById('closeModalBtn');
+            const submitBtn = document.getElementById('submitBtn');
+            const printBtn = document.getElementById('printBtn');
+
+            function generateReference() {
+                const prefix = 'APP';
+                const timestamp = Date.now().toString(36).toUpperCase();
+                const randomPart = Math.random().toString(36).substring(2, 8).toUpperCase();
+                return `${prefix}-${timestamp}-${randomPart}`;
+            }
+
+            function showModal(reference) {
+                referenceDisplay.textContent = reference;
+                modalOverlay.classList.add('active');
+            }
+
+            function hideModal() {
+                modalOverlay.classList.remove('active');
+            }
+
+            async function copyReference() {
+                const ref = referenceDisplay.textContent;
+                if (!ref) return;
+                try {
+                    await navigator.clipboard.writeText(ref);
+                    copyBtn.textContent = '✅ Copied!';
+                    setTimeout(() => {
+                        copyBtn.textContent = '📋 Copy Reference';
+                    }, 2000);
+                } catch (err) {
+                    const textArea = document.createElement('textarea');
+                    textArea.value = ref;
+                    document.body.appendChild(textArea);
+                    textArea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textArea);
+                    copyBtn.textContent = '✅ Copied!';
+                    setTimeout(() => {
+                        copyBtn.textContent = '📋 Copy Reference';
+                    }, 2000);
+                }
+            }
+
+            // Submit handler
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                if (!form.checkValidity()) {
+                    form.reportValidity();
+                    return;
+                }
+                const ref = generateReference();
+                try {
+                    const applications = JSON.parse(localStorage.getItem('jobApplications') || '[]');
+                    applications.push({
+                        reference: ref,
+                        submittedAt: new Date().toISOString(),
+                        post: form.post_applied?.value || 'N/A',
+                        applicantName: `${form.forenames?.value || ''} ${form.surname?.value || ''}`.trim(),
+                        postNumber: form.post_number?.value || '',
+                        closingDate: form.closing_date?.value || '',
+                        interviewDate: form.interview_date?.value || ''
+                    });
+                    localStorage.setItem('jobApplications', JSON.stringify(applications));
+                } catch (e) {
+                    console.warn('Could not store to localStorage', e);
+                }
+                showModal(ref);
+                submitBtn.disabled = true;
+                submitBtn.style.opacity = '0.7';
+                setTimeout(() => {
+                    submitBtn.disabled = false;
+                    submitBtn.style.opacity = '1';
+                }, 3000);
+            });
+
+            // Reset button re‑generates auto fields
+            form.addEventListener('reset', function() {
+                document.getElementById('postNumber').value = generatePostNumber();
+                document.getElementById('closingDate').value = generateClosingDate();
+                document.getElementById('interviewDate').value = generateInterviewDate();
+            });
+
+            // Print button
+            printBtn.addEventListener('click', function() {
+                window.print();
+            });
+
+            // Modal events
+            closeModalBtn.addEventListener('click', hideModal);
+            modalOverlay.addEventListener('click', function(e) {
+                if (e.target === modalOverlay) hideModal();
+            });
+            copyBtn.addEventListener('click', copyReference);
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+                    hideModal();
+                }
+            });
+
+            console.log('Form ready with all modifications including credit line');
+        })();
+    </script>
+</body>
+</html>
